@@ -1,34 +1,49 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { MovieService } from '../../../movie/movie.service';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { CreateMovieUseCase } from '../../application/create-movie.usecase';
+import { GetMovieUseCase } from '../../application/get-movie.usecase';
+import { UpdateMovieUseCase } from '../../application/update-movie.usecase';
 import { CreateMovieDto } from './dtos/create-movie.dto';
-import { UpdateMovieDto } from './dto/update-movie.dto';
+import { UpdateMovieDto } from './dtos/update-movie.dto';
 
 @Controller('movie')
 export class MovieController {
-  constructor(private readonly movieService: MovieService) {}
+  constructor(
+    private readonly getMovieUseCase: GetMovieUseCase,
+    private readonly getMoviesUseCase: GetMovieUseCase,
+    private readonly createMovieUseCase: CreateMovieUseCase,
+    private readonly updateMovieUseCase: UpdateMovieUseCase,
+  ) {}
 
   @Post()
   create(@Body() createMovieDto: CreateMovieDto) {
-    return this.movieService.create(createMovieDto);
+    return this.createMovieUseCase.execute(createMovieDto);
   }
 
   @Get()
   findAll() {
-    return this.movieService.findAll();
+    return this.getMoviesUseCase.execute(createMovieDto);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.movieService.findOne(+id);
+    return this.getMovieUseCase.execute(createMovieDto);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
-    return this.movieService.update(+id, updateMovieDto);
+    return this.updateMovieUseCase.execute(createMovieDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.movieService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.createMovieUseCase.execute(createMovieDto);
+  // }
 }
