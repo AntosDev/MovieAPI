@@ -3,7 +3,7 @@ import { AuthenticationRole } from '../domain/authentication-role';
 import { AuthenticationUser } from '../domain/authentication-user';
 
 @Injectable()
-export class UsersProvider {
+export class AuthUsersProvider {
   constructor() {}
   private readonly users = [
     new AuthenticationUser('john', 'changeme', AuthenticationRole.Premium),

@@ -1,11 +1,11 @@
-import { UsersProvider } from './UsersProvider';
+import { AuthUsersProvider } from './authusers.provider';
 import { JwtService } from '@nestjs/jwt';
 import { Inject } from '@nestjs/common';
 
 export class AuthenticationProvider {
   constructor(
-    @Inject(UsersProvider)
-    private usersProvider: UsersProvider,
+    @Inject(AuthUsersProvider)
+    private usersProvider: AuthUsersProvider,
     private jwtService: JwtService,
   ) {}
 
