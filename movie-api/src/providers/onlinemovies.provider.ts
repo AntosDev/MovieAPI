@@ -1,14 +1,11 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
-import { IOnlineMoviesProvider } from 'src/modules/movies/application/providers/onlineMovies.provider.interface';
-type omdResponse = {
-  Title: string;
-  Year: string;
-  Rated: string;
-  Released: string;
-  Genre: string;
-};
+import {
+  IOnlineMoviesProvider,
+  omdResponse,
+} from 'src/modules/movies/application/providers/onlineMovies.provider.interface';
+
 @Injectable()
 export class OnlineMoviesProvider implements IOnlineMoviesProvider {
   constructor(private readonly httpService: HttpService) {}

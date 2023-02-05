@@ -12,7 +12,7 @@ export class MoviesRepository implements IMovieRepository {
   }
   find(title: string): Movie;
   find(id: string): Movie;
-  find(id: unknown): import('../../../domain/movie').Movie {
+  find(id: unknown): Movie {
     throw new Error('Method not implemented.');
   }
 }

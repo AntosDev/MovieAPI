@@ -1,5 +1,5 @@
 import { Inject } from '@nestjs/common';
-import { Movie } from '../domain/movie';
+import { Movie, TestClass } from '../domain/movie';
 import { IMovieRepository } from '../domain/movie.repository';
 import { IOnlineMoviesProvider } from './providers/onlineMovies.provider.interface';
 
@@ -16,11 +16,11 @@ export class CreateMovieUseCase {
       movieData,
     );
 
-    const movie = Movie.CreateMovie(
-      movieData.title,
-      movieData.released,
-      movieData.genre,
-      movieData.director,
+    const movie = new Movie(
+      movieData.Title,
+      movieData.Released,
+      movieData.Genre,
+      movieData.Director,
     );
 
     this.repository.save(movie);
