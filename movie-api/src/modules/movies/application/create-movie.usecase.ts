@@ -1,4 +1,6 @@
 export class CreateMovieUseCase{
     constructor(){}
-    execute(){}
+    execute(request: {title: string}){
+        
+    }
 }

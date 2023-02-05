@@ -10,7 +10,7 @@ import {
 import { CreateMovieUseCase } from '../../application/create-movie.usecase';
 import { GetMovieUseCase } from '../../application/get-movie.usecase';
 import { UpdateMovieUseCase } from '../../application/update-movie.usecase';
-import { CreateMovieDto } from './dtos/create-movie.dto';
+import { CreateMovieRequestDto } from './dtos/create-movie.dto';
 import { UpdateMovieDto } from './dtos/update-movie.dto';
 
 @Controller('movie')
@@ -23,7 +23,7 @@ export class MovieController {
   ) {}
 
   @Post()
-  create(@Body() createMovieDto: CreateMovieDto) {
+  create(@Body() createMovieDto: CreateMovieRequestDto) {
     return this.createMovieUseCase.execute(createMovieDto);
   }
 
