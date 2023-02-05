@@ -6,23 +6,20 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateMovieUseCase } from '../../application/create-movie.usecase';
-import { GetMovieUseCase } from '../../application/get-movie.usecase';
-import { GetMoviesUseCase } from '../../application/get-movies.usecase';
-import { UpdateMovieUseCase } from '../../application/update-movie.usecase';
 import { CreateMovieRequestDto } from './dtos/create-movie.dto';
-import { UpdateMovieRequestDto } from './dtos/update-movie.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('movie')
 export class MovieController {
   constructor(
     // private readonly getMovieUseCase: GetMovieUseCase,
     // private readonly getMoviesUseCase: GetMoviesUseCase,
-    private readonly createMovieUseCase: CreateMovieUseCase,
-    // private readonly updateMovieUseCase: UpdateMovieUseCase,
+    private readonly createMovieUseCase: CreateMovieUseCase, // private readonly updateMovieUseCase: UpdateMovieUseCase,
   ) {}
-
+  @UseGuards(AuthGuard('jwt'))
   @Post()
   async create(@Body() createMovieDto: CreateMovieRequestDto) {
     return await this.createMovieUseCase.execute(createMovieDto);

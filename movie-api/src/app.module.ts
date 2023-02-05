@@ -2,12 +2,11 @@ import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { AppController } from './healthcheck/app.controller';
 import { AppService } from './healthcheck/app.service';
-import { IOnlineMoviesProvider } from './modules/movies/application/providers/onlineMovies.provider.interface';
 import { MovieModule } from './modules/movies/movie.module';
-import { OnlineMoviesProvider } from './providers/onlinemovies.provider';
+import { UsersAuthentication } from './modules/usersauth/userauths.module';
 
 @Module({
-  imports: [MovieModule, HttpModule],
+  imports: [MovieModule, HttpModule, UsersAuthentication],
   controllers: [AppController],
   providers: [AppService],
 })
