@@ -1,5 +1,5 @@
 import { Inject } from '@nestjs/common';
-import { Movie, TestClass } from '../domain/movie';
+import { Movie } from '../domain/movie';
 import { IMovieRepository } from '../domain/movie.repository';
 import { IOnlineMoviesProvider } from './providers/onlineMovies.provider.interface';
 
