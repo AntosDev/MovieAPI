@@ -3,7 +3,9 @@ import { IOnlineMoviesProvider } from "./providers/onlineMovies.provider.interfa
 
 export class CreateMovieUseCase{
     constructor( @Inject(IOnlineMoviesProvider) private readonly movieProvidfer: IOnlineMoviesProvider){}
-    execute(request: {title: string}){
-        this.movieProvidfer.searchByTitle(request.title);
+    async execute(request: {title: string}){
+        const movieData = await this.movieProvidfer.searchByTitle(request.title);
+        console.log("🚀 ~ file: create-movie.usecase.ts:8 ~ CreateMovieUseCase ~ execute ~ movieData", movieData)
+        
     }
 }

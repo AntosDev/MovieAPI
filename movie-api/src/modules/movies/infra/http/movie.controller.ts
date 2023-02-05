@@ -24,8 +24,8 @@ export class MovieController {
   ) {}
 
   @Post()
-  create(@Body() createMovieDto: CreateMovieRequestDto) {
-    return this.createMovieUseCase.execute(createMovieDto);
+  async create(@Body() createMovieDto: CreateMovieRequestDto) {
+    return await this.createMovieUseCase.execute(createMovieDto);
   }
 
   // @Get()
