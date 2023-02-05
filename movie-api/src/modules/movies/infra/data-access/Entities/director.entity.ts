@@ -5,25 +5,14 @@ import {
   Entity,
   CreateDateColumn,
 } from 'typeorm';
-import { Director } from './director.entity';
-import { Genre } from './genre.entity';
 
-@Entity({ name: 'movie' })
-export class Movie {
+@Entity({ name: 'director' })
+export class Director {
   @PrimaryColumn('uuid')
   id: string;
 
   @Column({ type: 'varchar', length: 300 })
-  title: string;
-
-  @Column({ type: 'varchar', length: 300 })
-  genre: Genre;
-
-  @Column({ type: 'varchar', length: 300 })
-  director: Director;
-
-  @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
-  releaseddate: Date;
+  name: string;
 
   @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   createdDate: Date;
