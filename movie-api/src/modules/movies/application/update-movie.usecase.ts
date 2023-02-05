@@ -1,4 +1,4 @@
-export class UpdateMovieUseCase{
-    constructor(){}
-    execute(){}
+export class UpdateMovieUseCase {
+  constructor() {}
+  execute() {}
 }
