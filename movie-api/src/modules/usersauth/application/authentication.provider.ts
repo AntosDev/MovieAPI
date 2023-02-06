@@ -1,11 +1,11 @@
-import { AuthUsersProvider } from './authusers.provider';
 import { JwtService } from '@nestjs/jwt';
 import { Inject } from '@nestjs/common';
+import { IUsersRepository } from '../domain/usersrepository';
 
 export class AuthenticationProvider {
   constructor(
-    @Inject(AuthUsersProvider)
-    private usersProvider: AuthUsersProvider,
+    @Inject(IUsersRepository)
+    private usersRepo: IUsersRepository,
     private jwtService: JwtService,
   ) {}
 
@@ -15,7 +15,7 @@ export class AuthenticationProvider {
       username,
     );
 
-    const user = await this.usersProvider.findOne(username);
+    const user = await this.usersRepo.findByUserName(username);
     if (user && user.password === pass) {
       const { password, ...result } = user;
       return result;
@@ -24,11 +24,11 @@ export class AuthenticationProvider {
   }
 
   async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
-    console.log(
-      '🚀 ~ file: authentication.provider.ts:31 ~ AuthenticationProvider ~ login ~ payload',
-      payload,
-    );
+    const payload = {
+      username: user.username,
+      sub: user.userId,
+      role: user.role,
+    };
     return {
       token: this.jwtService.sign(payload),
     };

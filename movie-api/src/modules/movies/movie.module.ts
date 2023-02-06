@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OnlineMoviesProvider } from 'src/external-providers/onlinemovies.provider';
 import { CreateMovieUseCase } from './application/create-movie.usecase';
+import { GetMoviesUseCase } from './application/get-movies.usecase';
 import { IOnlineMoviesProvider } from './application/providers/onlineMovies.provider.interface';
 import { IMovieRepository } from './domain/movie.repository';
 import { MovieEntity } from './infra/data-access/Entities/movie.entity';
@@ -13,6 +14,7 @@ import { MovieController } from './infra/http/movie.controller';
   imports: [HttpModule, TypeOrmModule.forFeature([MovieEntity])],
   controllers: [MovieController],
   providers: [
+    GetMoviesUseCase,
     CreateMovieUseCase,
     {
       provide: IOnlineMoviesProvider,

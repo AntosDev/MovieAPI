@@ -6,13 +6,19 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'director' })
-export class DirectorEntity {
+@Entity({ name: 'user' })
+export class UserEntity {
   @PrimaryColumn('uuid')
   id: string;
 
   @Column({ type: 'varchar', length: 300 })
-  name: string;
+  username: string;
+
+  @Column({ type: 'varchar', length: 300, nullable: true })
+  password: string;
+
+  @Column({ type: 'varchar', length: 300, nullable: true })
+  role: string;
 
   @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   createdDate: Date;
@@ -23,6 +29,6 @@ export class DirectorEntity {
   @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   lastChangedDateTime: Date;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar', length: 300, nullable: true })
   lastChangedBy: string;
 }

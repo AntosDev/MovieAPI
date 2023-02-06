@@ -9,18 +9,31 @@ export class CreateMovieUseCase {
     private readonly movieProvidfer: IOnlineMoviesProvider,
     @Inject(IMovieRepository) private readonly repository: IMovieRepository,
   ) {}
-  async execute(request: { title: string }) {
+  async execute(request: {
+    title: string;
+    user: { userId: string; username: string; role: string };
+  }) {
+    console.log(
+      '🚀 ~ file: create-movie.usecase.ts:16 ~ CreateMovieUseCase ~ user',
+      request.user,
+    );
     const movieData = await this.movieProvidfer.searchByTitle(request.title);
     console.log(
       '🚀 ~ file: create-movie.usecase.ts:8 ~ CreateMovieUseCase ~ execute ~ movieData',
       movieData,
     );
-
-    const movie = new Movie(
+    const userMovies = await this.repository.find(request.user.userId);
+    const movie = Movie.CreateMovie(
       movieData.Title,
       movieData.Released,
       movieData.Genre,
       movieData.Director,
+      {
+        username: request.user.username,
+        userId: request.user.userId,
+        userRole: request.user.role,
+      },
+      userMovies.length,
     );
 
     this.repository.save(movie);

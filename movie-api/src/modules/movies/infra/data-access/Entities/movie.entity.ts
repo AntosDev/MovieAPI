@@ -5,8 +5,8 @@ import {
   Entity,
   CreateDateColumn,
 } from 'typeorm';
-import { Director } from './director.entity';
-import { Genre } from './genre.entity';
+import { DirectorEntity } from './director.entity';
+import { GenreEntity } from './genre.entity';
 
 @Entity({ name: 'movie' })
 export class MovieEntity {
@@ -17,10 +17,10 @@ export class MovieEntity {
   title: string;
 
   @Column({ type: 'varchar', length: 300, nullable: true })
-  genre: Genre;
+  genre: GenreEntity;
 
   @Column({ type: 'varchar', length: 300, nullable: true })
-  director: Director;
+  director: DirectorEntity;
 
   @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   releaseddate: Date;

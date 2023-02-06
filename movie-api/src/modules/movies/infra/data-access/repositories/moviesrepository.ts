@@ -18,13 +18,34 @@ export class MoviesRepository implements IMovieRepository {
     this.repo.save({
       title: movie.title,
       id: movie.id,
-      createdBy: 'test',
+      createdBy: movie.userId,
       // createdDate: new Date(),
     });
   }
-  find(title: string): Movie;
-  find(id: string): Movie;
-  find(id: unknown): Movie {
-    throw new Error('Method not implemented.');
+
+  find(userId: string): Promise<Movie[]> {
+    console.log(
+      '🚀 ~ file: moviesrepository.ts:27 ~ MoviesRepository ~ find ~ userId',
+      userId,
+    );
+    return this.repo
+      .find({
+        // relations: ['genre', 'director'],
+        where: {
+          createdBy: userId,
+        },
+      })
+      .then((dbmovies) =>
+        dbmovies.map(
+          (dbMovie): Movie => ({
+            title: dbMovie.title,
+            id: dbMovie.id,
+            released: dbMovie.releaseddate.toISOString(),
+            director: dbMovie.director?.name,
+            genre: dbMovie.genre?.name,
+            userId: dbMovie.createdBy,
+          }),
+        ),
+      );
   }
 }
