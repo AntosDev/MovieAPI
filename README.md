@@ -11,6 +11,12 @@ Steps:
 6- link the above together orchastrated in the use case
 
 7- implement authentication module (following nestjs official documentation)
+8- add local and jwt guards
+9- guard create movie APi by JWT token
+
+10- create entities and install typeORM packages
+11- create docker files for postgres
+12- create database from typeORM to postgres docker
 
 Decisions:
 NestJS
