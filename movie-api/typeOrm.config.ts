@@ -6,7 +6,8 @@ import { MovieEntity } from './src/modules/movies/infra/data-access/Entities/mov
 import { GenreEntity as GenreEntity } from './src/modules/movies/infra/data-access/Entities/genre.entity';
 import { DirectorEntity } from './src/modules/movies/infra/data-access/Entities/director.entity';
 import { UserEntity } from './src/modules/usersauth/infra/data-access/entities/user.entities';
-import { Seed0000000000001 } from './src/migrations/initialseed';
+import { Mig0000000000001 } from './migrations/Mig0000000000001';
+import { Mig0000000000000 } from './migrations/Mig0000000000000';
 config();
 
 const configService = new ConfigService();
@@ -18,8 +19,7 @@ export default new DataSource({
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
-  synchronize: true,
   entities: [MovieEntity, GenreEntity, DirectorEntity, UserEntity],
-  migrations: [Seed0000000000001],
+  migrations: [Mig0000000000000, Mig0000000000001],
   migrationsTableName: 'migrations',
 });

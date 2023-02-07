@@ -1,14 +1,15 @@
 import {
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   Column,
   UpdateDateColumn,
   CreateDateColumn,
   Entity,
+  Unique,
 } from 'typeorm';
 
 @Entity({ name: 'genre' })
 export class GenreEntity {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ type: 'varchar', length: 300 })
@@ -23,6 +24,6 @@ export class GenreEntity {
   @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   lastChangedDateTime: Date;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar', length: 300, nullable: true })
   lastChangedBy: string;
 }

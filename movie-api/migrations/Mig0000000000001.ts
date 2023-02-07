@@ -1,17 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
-import { AuthenticationRole } from '../modules/usersauth/domain/authentication-role';
-import { UserEntity } from '../modules/usersauth/infra/data-access/entities/user.entities';
+import { AuthenticationRole } from '../src/modules/usersauth/domain/authentication-role';
+import { UserEntity } from '../src/modules/usersauth/infra/data-access/entities/user.entities';
 import { MigrationInterface, QueryRunner } from 'typeorm';
+import * as bcrypt from 'bcryptjs';
+import { ConfigService } from '@nestjs/config';
 
-export class Seed0000000000001 implements MigrationInterface {
-  name = 'Seed0000000000001';
-
+export class Mig0000000000001 implements MigrationInterface {
+  name = 'Mig000000000000011775803926255';
   public async up(queryRunner: QueryRunner): Promise<void> {
+    const salt = await bcrypt.genSalt(Number(process.env.PASS_SALT));
     await queryRunner.manager.save(
       queryRunner.manager.create<UserEntity>(UserEntity, {
         id: uuidv4(),
-        username: 'john',
-        password: 'changeme',
+        username: 'basic-test',
+        password: await bcrypt.hash('xdgwpeomr6_uNFpg17rr', salt),
         role: AuthenticationRole.Premium,
         createdBy: 'seed',
       }),
@@ -19,8 +21,8 @@ export class Seed0000000000001 implements MigrationInterface {
     await queryRunner.manager.save(
       queryRunner.manager.create<UserEntity>(UserEntity, {
         id: uuidv4(),
-        username: 'maria',
-        password: 'guess',
+        username: 'premium-test',
+        password: await bcrypt.hash('GBLspofkqpfe_qwf34pomf', salt),
         role: AuthenticationRole.Basic,
         createdBy: 'seed',
       }),

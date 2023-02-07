@@ -1,6 +1,7 @@
 import { JwtService } from '@nestjs/jwt';
 import { Inject } from '@nestjs/common';
 import { IUsersRepository } from '../domain/usersrepository';
+import * as bcrypt from 'bcryptjs';
 
 export class AuthenticationProvider {
   constructor(
@@ -10,8 +11,11 @@ export class AuthenticationProvider {
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
+    const salt = await bcrypt.genSalt(Number(process.env.PASS_SALT));
+
+    const hashedPass = await bcrypt.hash(pass, salt);
     const user = await this.usersRepo.findByUserName(username);
-    if (user && user.password === pass) {
+    if (user && bcrypt.compare(pass, hashedPass)) {
       const { password, ...result } = user;
       return result;
     }

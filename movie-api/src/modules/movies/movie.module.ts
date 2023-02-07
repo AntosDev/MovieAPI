@@ -6,12 +6,19 @@ import { CreateMovieUseCase } from './application/create-movie.usecase';
 import { GetMoviesUseCase } from './application/get-movies.usecase';
 import { IOnlineMoviesProvider } from './application/providers/onlineMovies.provider.interface';
 import { IMovieRepository } from './domain/movie.repository';
+import { DirectorEntity } from './infra/data-access/Entities/director.entity';
+import { GenreEntity } from './infra/data-access/Entities/genre.entity';
 import { MovieEntity } from './infra/data-access/Entities/movie.entity';
 import { MoviesRepository } from './infra/data-access/repositories/moviesrepository';
 import { MovieController } from './infra/http/movie.controller';
 
 @Module({
-  imports: [HttpModule, TypeOrmModule.forFeature([MovieEntity])],
+  imports: [
+    HttpModule,
+    TypeOrmModule.forFeature([MovieEntity]),
+    TypeOrmModule.forFeature([GenreEntity]),
+    TypeOrmModule.forFeature([DirectorEntity]),
+  ],
   controllers: [MovieController],
   providers: [
     GetMoviesUseCase,

@@ -4,6 +4,8 @@ import {
   UpdateDateColumn,
   Entity,
   CreateDateColumn,
+  JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 import { DirectorEntity } from './director.entity';
 import { GenreEntity } from './genre.entity';
@@ -16,10 +18,12 @@ export class MovieEntity {
   @Column({ type: 'varchar', length: 300 })
   title: string;
 
-  @Column({ type: 'varchar', length: 300, nullable: true })
+  @ManyToOne((type) => GenreEntity)
+  @JoinColumn({ name: 'genre_id' })
   genre: GenreEntity;
 
-  @Column({ type: 'varchar', length: 300, nullable: true })
+  @ManyToOne((type) => DirectorEntity)
+  @JoinColumn({ name: 'director_id' })
   director: DirectorEntity;
 
   @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
