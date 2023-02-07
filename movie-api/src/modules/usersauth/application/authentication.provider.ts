@@ -10,11 +10,6 @@ export class AuthenticationProvider {
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
-    console.log(
-      '🚀 ~ file: authentication.provider.ts:13 ~ AuthenticationProvider ~ validateUser ~ username',
-      username,
-    );
-
     const user = await this.usersRepo.findByUserName(username);
     if (user && user.password === pass) {
       const { password, ...result } = user;

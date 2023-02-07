@@ -11,10 +11,6 @@ export class OnlineMoviesProvider implements IOnlineMoviesProvider {
   constructor(private readonly httpService: HttpService) {}
 
   async searchByTitle(title: string): Promise<omdResponse> {
-    console.log(
-      '🚀 ~ file: onlinemovies.provider.ts:10 ~ OnlineMoviesProvider ~ searchByTitle ~ title',
-      title,
-    );
     const response = await firstValueFrom(
       this.httpService.get<omdResponse>(
         `https://www.omdbapi.com/?t=${title}&apikey=acc94964`,

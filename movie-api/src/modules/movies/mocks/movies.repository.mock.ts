@@ -4,7 +4,6 @@ import { IMovieRepository } from '../domain/movie.repository';
 export class MoviesRepositoryMock implements IMovieRepository {
   movies: Movie[] = [];
   save = jest.fn((movie: Movie): Promise<void> => {
-    console.log('============= it is beign called');
     this.movies.push(movie);
     return Promise.resolve();
   });

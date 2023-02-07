@@ -7,7 +7,6 @@ export class Seed0000000000001 implements MigrationInterface {
   name = 'Seed0000000000001';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    console.log('migrating');
     await queryRunner.manager.save(
       queryRunner.manager.create<UserEntity>(UserEntity, {
         id: uuidv4(),

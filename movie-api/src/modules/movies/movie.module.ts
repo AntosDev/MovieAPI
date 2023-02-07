@@ -1,7 +1,7 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OnlineMoviesProvider } from 'src/external-providers/onlinemovies.provider';
+import { OnlineMoviesProvider } from '../../external-providers/onlinemovies.provider';
 import { CreateMovieUseCase } from './application/create-movie.usecase';
 import { GetMoviesUseCase } from './application/get-movies.usecase';
 import { IOnlineMoviesProvider } from './application/providers/onlineMovies.provider.interface';

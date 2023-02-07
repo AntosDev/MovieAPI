@@ -11,10 +11,6 @@ export class MoviesRepository implements IMovieRepository {
     private readonly repo: Repository<MovieEntity>,
   ) {}
   async save(movie: Movie): Promise<void> {
-    console.log(
-      '🚀 ~ file: moviesrepository.ts:8 ~ MoviesRepository ~ save ~ movie',
-      movie,
-    );
     await this.repo.save({
       title: movie.title,
       id: movie.id,
@@ -24,10 +20,6 @@ export class MoviesRepository implements IMovieRepository {
   }
 
   find(userId: string): Promise<Movie[]> {
-    console.log(
-      '🚀 ~ file: moviesrepository.ts:27 ~ MoviesRepository ~ find ~ userId',
-      userId,
-    );
     return this.repo
       .find({
         // relations: ['genre', 'director'],
