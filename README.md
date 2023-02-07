@@ -18,6 +18,15 @@ Steps:
 11- create docker files for postgres
 12- create database from typeORM to postgres docker
 
+13- save vreated movie in DB
+14- Get authenticated user from context
+15- implement business logic
+16- implement get movies
+
+17- implement unit tests for movies use cases
+
+18- dockerise nestjs
+
 Decisions:
 NestJS
 Monolith
