@@ -134,7 +134,6 @@
             <li>domain containing the domain objects and logic </li>
             <li>infra: containing both http (controllers) and data-access (entities, repositories implementation) </li>
         </ul>
-
     </li>
     <li> Added online movies provider, used explicit injection instead of injection by interface to respect hexagonal
         architecture</li>
