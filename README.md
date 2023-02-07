@@ -1,12 +1,13 @@
 # MovieAPI
 
 <h1>Simple Movie API using NestJS</h1>
-To Run:
 
+<h2>To Run:</h2>
+<pre>
 - docker compose up and wait (it will take some time to run the db migrations)
 
 - Enjoy
-
+</pre>
 How it was developed:
 The development tried to adhere as much as possible to SOLID (especially IoC), hexagonal architecture (dependencies are outwards) and DDD maintaining a clean domain and application latyer
 
