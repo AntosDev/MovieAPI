@@ -69,12 +69,15 @@
                     <li>application: the local and JWT strategies (the implementations needed to validate credentials,
                         generate
                         tokens andvalidate them; followed nestjs official documentation)</li>
-                    <li>- domain: contains the entities used by the module</li>
-                    <li>- infra:</li>
-                    <li>- http: the auth controller containing the ('auth/login') api</li>
-                    <li>- data-access: the user database entity the repository used to retrieve users</li>
-                    <li>- mocks: the classes used by ject</li>
-                    <li>- the module.ts which is linking it all together</li>
+                    <li><b>domain: contains the entities used by the module</li>
+                    <li><b>infra:</b>
+                        <ul>
+                            <li><b>http:</b> the auth controller containing the ('auth/login') api</li>
+                            <li><b>data-access:</b> the user database entity the repository used to retrieve users</li>
+                        </ul>
+                    </li>
+                    <li><b>mocks:</b> the classes used by ject</li>
+                    <li>the module.ts which is linking it all together</li>
                     <li>
                 </ul>
             </li>
@@ -85,8 +88,9 @@
                         <ul>
                             <li><b>providers:</b> the interfaces of the external providers that the module's application
                                 needs to function, the implementation of which will be offered by the module.ts</li>
-                            <li><b>the use cases of the application, tahese are the main functionalities of the module,
-                                    each complete of its own accord </li>
+                            <li><b>the use cases</b> of the application, tahese are the main functionalities of the
+                                module,
+                                each complete of its own accord </li>
                             <li><b>the use cases' spec files to run unit tests</li>
                         </ul>
                     </li>
@@ -123,14 +127,14 @@
 </ul>
 <h2>Steps(Gross-modo):</h2>
 <ol>
-    <li> Nest new movie-api with npm</li>
-    <li>
-        <pre>uild project structure 
-        - moudlar 
-            - application containing the use cases 
-            - domain containing the domain objects and logic 
-            - infra: containing both http (controllers) and data-access (entities, repositories implementation)            
-    </pre>
+    <li>Create project: nest new movie-api with npm</li>
+    <li>Build modular project structure
+        <ul>
+            <li>application containing the use cases</li>
+            <li>domain containing the domain objects and logic </li>
+            <li>infra: containing both http (controllers) and data-access (entities, repositories implementation) </li>
+        </ul>
+
     </li>
     <li> Added online movies provider, used explicit injection instead of injection by interface to respect hexagonal
         architecture</li>
