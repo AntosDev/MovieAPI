@@ -1,7 +1,7 @@
 <h1>Simple Movie API using NestJS</h1>
 
 <h2>To Run:</h2>
-<h4>docker compose up and wait (it will take some time to run the db migrations</h4>
+<h4><pre>docker compose up</pre> and wait (it will take some time to run the db migrations)</h4>
 <h4>Enjoy!</h4>
 <h3>Useful commands:</h3>
 <ul>
