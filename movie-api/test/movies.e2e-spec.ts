@@ -4,17 +4,22 @@ import supertest, * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { IMovieRepository } from './../src/modules/movies/domain/movie.repository';
 import { MoviesRepositoryMock } from './../src/modules/movies/mocks/movies.repository.mock';
+import { IUsersRepository } from './../src/modules/usersauth/domain/usersrepository';
+import { UsersRepositoryMock } from './../src/modules/usersauth/mocks/user-repository.mock';
 
 describe('MoviesControllere (e2e)', () => {
   let app: INestApplication;
   let moviesRepoMock: MoviesRepositoryMock;
+  let usersRepoMock: UsersRepositoryMock;
   beforeEach(async () => {
     moviesRepoMock = new MoviesRepositoryMock();
+    usersRepoMock = new UsersRepositoryMock();
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     })
       .overrideProvider(IMovieRepository)
       .useValue(moviesRepoMock)
+      .overrideProvider(IUsersRepository).useValue(usersRepoMock)
       .compile();
 
     app = moduleFixture.createNestApplication();
