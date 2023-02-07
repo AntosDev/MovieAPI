@@ -1,6 +1,6 @@
 import { JwtService } from '@nestjs/jwt';
 import { Inject } from '@nestjs/common';
-import { IUsersRepository } from '../domain/usersrepository';
+import { IUsersRepository } from '../domain/users.repository.interface';
 import * as bcrypt from 'bcryptjs';
 
 export class AuthenticationProvider {

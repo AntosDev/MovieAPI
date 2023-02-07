@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Movie } from 'src/modules/movies/domain/movie';
-import { IMovieRepository } from 'src/modules/movies/domain/movie.repository';
+import { Movie } from '../../../domain/movie';
+import { IMovieRepository } from '../../../domain/movie.repository.interface';
 import { Repository } from 'typeorm';
 import { DirectorEntity } from '../Entities/director.entity';
 import { GenreEntity } from '../Entities/genre.entity';

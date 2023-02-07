@@ -5,8 +5,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './application/strategies/jwt.strategy';
 import { AuthenticationController } from './infra/http/authentication.controller';
 import { LocalStrategy } from './application/strategies/local.strategy';
-import { IUsersRepository } from './domain/usersrepository';
-import { UsersRepository } from './infra/data-access/repositories/userrepositery';
+import { IUsersRepository } from './domain/users.repository.interface';
+import { UsersRepository } from './infra/data-access/repositories/users.repositery';
 import { UserEntity } from './infra/data-access/entities/user.entities';
 import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({

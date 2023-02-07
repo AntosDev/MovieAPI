@@ -1,5 +1,5 @@
 import { Movie } from '../domain/movie';
-import { IMovieRepository } from '../domain/movie.repository';
+import { IMovieRepository } from '../domain/movie.repository.interface';
 
 export class MoviesRepositoryMock implements IMovieRepository {
   movies: Movie[] = [];

@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { IMovieRepository } from '../domain/movie.repository';
+import { IMovieRepository } from '../domain/movie.repository.interface';
 import { MoviesRepositoryMock } from '../mocks/movies.repository.mock';
 import { GetMoviesUseCase } from './get-movies.usecase';
 

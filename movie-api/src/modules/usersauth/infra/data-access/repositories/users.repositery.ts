@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AuthenticationRole } from 'src/modules/usersauth/domain/authentication-role';
-import { AuthenticationUser } from 'src/modules/usersauth/domain/authentication-user';
-import { IUsersRepository } from 'src/modules/usersauth/domain/usersrepository';
+import { AuthenticationRole } from '../../../domain/authentication-role';
+import { AuthenticationUser } from '../../../domain/authentication-user';
+import { IUsersRepository } from '../../../domain/users.repository.interface';
 import { Repository } from 'typeorm';
 import { UserEntity } from '../entities/user.entities';
 @Injectable()

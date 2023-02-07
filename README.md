@@ -1,6 +1,6 @@
 # MovieAPI
 
-Simple Movie API using NestJS
+<h1>Simple Movie API using NestJS</h1>
 To Run:
 
 - docker compose up and wait (it will take some time to run the db migrations)

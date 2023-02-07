@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import supertest, * as request from 'supertest';
 import { AppModule } from './../src/app.module';
-import { IMovieRepository } from './../src/modules/movies/domain/movie.repository';
+import { IMovieRepository } from '../src/modules/movies/domain/movie.repository.interface';
 import { MoviesRepositoryMock } from './../src/modules/movies/mocks/movies.repository.mock';
-import { IUsersRepository } from './../src/modules/usersauth/domain/usersrepository';
+import { IUsersRepository } from '../src/modules/usersauth/domain/users.repository.interface';
 import { UsersRepositoryMock } from './../src/modules/usersauth/mocks/user-repository.mock';
 
 describe('MoviesControllere (e2e)', () => {

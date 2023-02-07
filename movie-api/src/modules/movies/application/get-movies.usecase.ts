@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { Movie } from '../domain/movie';
-import { IMovieRepository } from '../domain/movie.repository';
+import { IMovieRepository } from '../domain/movie.repository.interface';
 
 export class GetMoviesUseCase {
   constructor(

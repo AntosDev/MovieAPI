@@ -1,6 +1,6 @@
 import { AuthenticationRole } from '../domain/authentication-role';
 import { AuthenticationUser } from '../domain/authentication-user';
-import { IUsersRepository } from '../domain/usersrepository';
+import { IUsersRepository } from '../domain/users.repository.interface';
 
 export class UsersRepositoryMock implements IUsersRepository {
 

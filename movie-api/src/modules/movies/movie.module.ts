@@ -5,11 +5,11 @@ import { OnlineMoviesProvider } from '../../external-providers/onlinemovies.prov
 import { CreateMovieUseCase } from './application/create-movie.usecase';
 import { GetMoviesUseCase } from './application/get-movies.usecase';
 import { IOnlineMoviesProvider } from './application/providers/onlineMovies.provider.interface';
-import { IMovieRepository } from './domain/movie.repository';
+import { IMovieRepository } from './domain/movie.repository.interface';
 import { DirectorEntity } from './infra/data-access/Entities/director.entity';
 import { GenreEntity } from './infra/data-access/Entities/genre.entity';
 import { MovieEntity } from './infra/data-access/Entities/movie.entity';
-import { MoviesRepository } from './infra/data-access/repositories/moviesrepository';
+import { MoviesRepository } from './infra/data-access/repositories/movies.repository';
 import { MovieController } from './infra/http/movie.controller';
 
 @Module({
