@@ -13,15 +13,7 @@ export class CreateMovieUseCase {
     title: string;
     user: { userId: string; username: string; role: string };
   }) {
-    console.log(
-      '🚀 ~ file: create-movie.usecase.ts:16 ~ CreateMovieUseCase ~ user',
-      request.user,
-    );
     const movieData = await this.movieProvidfer.searchByTitle(request.title);
-    console.log(
-      '🚀 ~ file: create-movie.usecase.ts:8 ~ CreateMovieUseCase ~ execute ~ movieData',
-      movieData,
-    );
     const userMovies = await this.repository.find(request.user.userId);
     const movie = Movie.CreateMovie(
       movieData.Title,
@@ -35,7 +27,6 @@ export class CreateMovieUseCase {
       },
       userMovies.length,
     );
-
     this.repository.save(movie);
   }
 }
