@@ -3,7 +3,7 @@ services:
   api:
     container_name: backend
     build:
-      dockerfile: DockerFile
+      dockerfile: dockerfile
       context: .
       # Only will build development stage from our dockerfile
       target: development
